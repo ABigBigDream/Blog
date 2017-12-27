@@ -1,0 +1,21 @@
+.login{
+    background: url(//cn.bing.com/az/hprichbg/rb/CPNYSnow_ZH-CN13335620157_1366x768.jpg);
+    background-attachment: fixed;
+}
+
+.login .avatar{
+    display:block;
+    width:80px;
+    height: 80px;
+    background: url(./avatar.jpeg) no-repeat;
+    border-radius: 50%;
+    background-size: 100%;
+    margin: 20px auto;
+}
+
+.login form{
+    margin-top: 20px;
+    padding: 26px 24px 46px;
+    background-color: rgba(251,251,251,0.3);
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}

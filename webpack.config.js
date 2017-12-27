@@ -5,7 +5,8 @@ const srcPath = path.join(__dirname, 'src');
 
 module.exports = {
     entry: {
-        'common/main' : [srcPath+'/common/main.js', 'webpack-hot-middleware/client?reload=true'] 
+        'common/main' : [srcPath+'/common/main.js', 'webpack-hot-middleware/client?reload=true'],
+        'common/admin-lib':['bootstrap','BOOTSTRAP_CSS'] //public/common/admin-lib.js public/common/admin-lib.css
     },
     output: {
         path : __dirname + '/public',
@@ -14,6 +15,15 @@ module.exports = {
     },
     //方便调试断点
     devtool: 'eval-source-map', 
+    resolve: {
+        modules:[srcPath,'node_modules'],//指定webpack查找文件目录
+        //取别名
+        alias: {
+            SRC: srcPath,
+            BOOTSTRAP_CSS:'bootstrap/dist/css/bootstrap.css',
+            BOOTSTRAP_TABLE_CSS:'bootstrap-table/dist/bootstrap-table.css'
+        }
+    },
     module: {
         rules:[
             //CSS加载器

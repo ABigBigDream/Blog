@@ -2,16 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 /**
- * 前台页面
+ * 文章列表路由设置
  */
 router.get('/', (req, res, next)=>{
-    res.render('index');
-});
-/**
- * 登录页面
- */
-router.get('/login', (req, res, next)=>{
-    res.render('login');
+    res.render('admin/list');
 })
 
 module.exports = router;

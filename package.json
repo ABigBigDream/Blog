@@ -9,6 +9,7 @@
     "dev1": "node app",
     "dev2": "supervisor -w server,app.js,webpack.config.js  app",
     "dev3": "set NODE_ENV=dev&supervisor -w server,app.js,webpack.config.js  app",
+    "dev4": "cross-env NODE_ENV=dev supervisor -w server,app.js,webpack.config.js  app",
     "build": "webpack --config webpack.production.config"
   },
   "repository": {
@@ -29,9 +30,11 @@
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.21.0",
     "clean-webpack-plugin": "^0.1.17",
+    "cross-env": "^5.1.3",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
+    "md5.js": "^1.3.4",
     "reload": "^2.2.2",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
@@ -42,8 +45,11 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
+    "bootstrap-table": "^1.11.2",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "jquery": "^3.2.1",
     "mongoose": "^4.13.7",
     "swig": "^1.4.2"
   }
