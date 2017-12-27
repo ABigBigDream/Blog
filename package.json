@@ -1,0 +1,50 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "生活记录博客",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack",
+    "dev1": "node app",
+    "dev2": "supervisor -w server,app.js,webpack.config.js  app",
+    "dev3": "set NODE_ENV=dev&supervisor -w server,app.js,webpack.config.js  app",
+    "build": "webpack --config webpack.production.config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ABigBigDream/Blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ABigBigDream/Blog/issues"
+  },
+  "homepage": "https://github.com/ABigBigDream/Blog#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.21.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "reload": "^2.2.2",
+    "style-loader": "^0.19.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-middleware": "^2.0.3",
+    "webpack-hot-middleware": "^2.21.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mongoose": "^4.13.7",
+    "swig": "^1.4.2"
+  }
+}
