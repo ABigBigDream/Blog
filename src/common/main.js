@@ -4,6 +4,7 @@ let modelPath = $('[data-name]').data('name');
 console.log(modelPath);
 if(modelPath) {
     //异步引入
+    console.log('../'+modelPath);
     import('../'+modelPath)
     .then(model=>{
         console.log('加载模块成功');

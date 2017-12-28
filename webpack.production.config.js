@@ -10,22 +10,32 @@ const srcPath = path.join(__dirname, 'src');
 
 module.exports = {
     entry: {
-        'common/main' : [srcPath+'/common/main.js'] 
+        'common/main' : [srcPath+'/common/main.js'],
+        'common/admin-lib':['bootstrap','BOOTSTRAP_CSS'] 
     },
     output: {
         path : __dirname + '/public',
         filename : '[name].js',
         publicPath: 'http://localhost:8080/public'
     },
+    resolve: {
+        modules:[srcPath,'node_modules'],//指定webpack查找文件目录
+        //取别名
+        alias: {
+            SRC: srcPath,
+            BOOTSTRAP_CSS:'bootstrap/dist/css/bootstrap.css'
+            // BOOTSTRAP_TABLE_CSS:'bootstrap-table/dist/bootstrap-table.css'
+        }
+    },
     module: {
         rules:[
             //CSS加载器
             {
                 test: /\.css$/,
-                use: [  
-                    'style-loader',  //style-loader一定要写在css-loader之前
-                    'css-loader'
-                ]
+                use:ExtractTextPlugin.extract({
+					fallback: "style-loader",
+					use: "css-loader"
+				})
             },
             //图片加载器
             {
