@@ -10,7 +10,7 @@ router.use((req, res, next)=>{
         success: false,
         message: ''
     };
-    console.log('进入中间件');
+    console.log('进入admin.js中间件');
     next();
 });
 

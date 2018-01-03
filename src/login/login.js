@@ -26,7 +26,8 @@ $('.login form').on('submit', function(e) {
         },
         success: function(data) {
             if(data.success) {
-                location.href = '/admin';
+                alert(data.message);
+                location.href = '/admin/';
             }else {
                 $('#errMsg').text(data.message)
                 .show()
