@@ -4,20 +4,20 @@ require('jquery-validation/dist/localization/messages_zh');
 
 $('#myForm').validate({
     rules: {
-        title: {
-            required: true,
-            maxlength: 16
+        'title': {
+            'required': true,
+            'maxlength': 16
         },
-        body:{
-            required: true
+        'body':{
+            'required': true
         }
     },
     message: {
-        title: {
-            required: '标题不能为空'
+        'title': {
+            'required': '标题不能为空'
         },
-        body: {
-            required: '内容不能为空'
+        'body': {
+            'required': '内容不能为空'
         }
     },
     submitHandler: function(form){
@@ -29,8 +29,8 @@ $('#myForm').validate({
                 body: $('#body').val()
             },
             success: function(res) {
+                alert(res.message);
                 if(res.success) {
-                    alert(res.message);
                     location.href = '/admin/';
                 }
             }

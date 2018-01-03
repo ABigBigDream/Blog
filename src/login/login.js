@@ -10,7 +10,7 @@ $('.login form').on('submit', function(e) {
         .show()
         .animate({
             display:'none'
-        }, 2000, function() {
+        }, 1500, function() {
             $(this).hide();
         });
         return;
@@ -25,18 +25,18 @@ $('.login form').on('submit', function(e) {
             password
         },
         success: function(data) {
-            if(data.success) {
-                alert(data.message);
-                location.href = '/admin/';
-            }else {
+             if(data.success) {
+                 alert("登录结果：" + data.message);
+                 location.href = '/admin/';
+             }else {
                 $('#errMsg').text(data.message)
                 .show()
                 .animate({
-                    display:'none'
-                }, 2000, function() {
-                    $(this).hide();
-                });
-            }
+                   display:'none' 
+                }, 1500, function() {
+                    this.style.display = 'none';
+                })
+             }
         }
     });
 });

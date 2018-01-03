@@ -22,10 +22,13 @@ Date.prototype.format = function(fmt) {
 
 $('#table').bootstrapTable({
     url: '/admin/article/pagenation',
+    sortOrder: 'desc',
     columns:[{
             field: '_id',
             title: 'ID',
             width: 100,
+            visible: false, //默认隐藏该字段
+            sortable: true,
             align: 'center'
         },{
             field: 'title',
@@ -38,6 +41,7 @@ $('#table').bootstrapTable({
             field: 'time',
             title: '发布时间',
             align: 'center',
+            sortable: true,
             formatter: function(value) {
                 return new Date(value).format('yyyy-MM-dd hh:mm:ss');
             }
@@ -52,6 +56,9 @@ $('#table').bootstrapTable({
               </div>`
             },
             events: {
+                //bootstrap-table给提供的方法
+                //value     当前字段
+                //row       当前这一行的数据，数组形式表示
                 'click [data-action="edit"]' : function(e, value, row, index) {
                     location.href = '/admin/edit/'+row['_id'];
                 },
@@ -62,10 +69,13 @@ $('#table').bootstrapTable({
                             url: '/admin/article/' + row['_id'],
                             method:'delete',
                             success: function(res) {
-                                $('#table').bootstrapTable('remove', {
-                                    field: '_id', 
-                                    values: [row['_id']]
-                                });
+                                if(res.success) {
+                                    alert(res.message);
+                                    $('#table').bootstrapTable('remove', {
+                                        field: '_id', 
+                                        values: [row['_id']]
+                                    });
+                                } 
                             }  
                         })
                     }
@@ -73,12 +83,21 @@ $('#table').bootstrapTable({
             }
         }
     ],
-    // sidePagination: 'server',
+    sidePagination: 'server', //启用服务端分页
     pagination: true,
-    // classes: 'table table-hover table-no-border', //默认覆盖样式
+    classes: 'table table-hover table-no-bordered', //默认覆盖样式
     showRefresh: true,
     showColumns: true,
     paginationPreText: '上一页',
     paginationNextText: '下一页',
     search: true,
+    responseHandler: function(res) { //加载后端数据成功后会调用的函数
+        if(!res.success) {
+            return {
+                total: 0,
+                rows: []
+            }
+        }
+        return res.data;
+    }
 });

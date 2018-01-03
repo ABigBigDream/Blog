@@ -1,4 +1,7 @@
 console.log('我是编辑页面');
+require('jquery-validation');
+require('jquery-validation/dist/localization/messages_zh');
+
 $('#myForm').validate({
     rules:{
         'title':{
@@ -24,11 +27,10 @@ $('#myForm').validate({
                 body: $('#body').val()
             },
             success: function(res) {
-                // if(res.success) {
-                //     alert(res.message);
-                //     // location.href = '/admin/';
-                // }
-                alert(res.message);
+                if(res.success) {
+                    alert(res.message);
+                    location.href = '/admin/';
+                }
             }
         })
     }

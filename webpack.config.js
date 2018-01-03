@@ -11,7 +11,7 @@ module.exports = {
     output: {
         path : __dirname + '/public',
         filename : '[name].js',
-        publicPath: 'http://localhost:8080/public'
+        publicPath: 'http://localhost:3000/public'
     },
     //方便调试断点
     devtool: 'eval-source-map', 

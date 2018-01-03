@@ -11,7 +11,6 @@ router.use((req, res, next)=>{
         success: false,
         message: ''
     };
-    console.log('进入中间件');
     next();
 });
 
