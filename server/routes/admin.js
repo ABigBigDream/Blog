@@ -90,6 +90,9 @@ router.get('/article/pagenation', (req, res, next)=>{
     Article.find().sort({
         [sort]: order            // 将常量变为变量，可以使用[]运算
     }).skip(offset).limit(limit).then(articles=>{
+        // articles.map((article, index=>{
+        //     article.body = article.body.substring(0, 50);
+        // }));
         responseMessage.success = true;
         responseMessage.data.rows = articles;
         res.json(responseMessage);

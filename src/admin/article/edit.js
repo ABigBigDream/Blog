@@ -1,4 +1,5 @@
-console.log('我是编辑页面');
+//初始化编译器
+var ue = UE.getEditor('body');
 require('jquery-validation');
 require('jquery-validation/dist/localization/messages_zh');
 
@@ -24,7 +25,7 @@ $('#myForm').validate({
             data:{
                 id: $('#id').val(),
                 title : $('#title').val(),
-                body: $('#body').val()
+                body: ue.getContent()
             },
             success: function(res) {
                 if(res.success) {

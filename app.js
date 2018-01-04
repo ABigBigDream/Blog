@@ -22,6 +22,38 @@ app.use(session({
     saveUninitialized: true
 }));
 
+const ueditor = require('ueditor');
+//将public/ueditor目录下的资源静态化
+app.use('/ueditor', express.static(__dirname+'/public/ueditor'));
+app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function (req, res, next) {
+    //客户端上传文件设置
+    var imgDir = '/ueditor/upload/img'
+     var ActionType = req.query.action;
+    if (ActionType === 'uploadimage' || ActionType === 'uploadfile' || ActionType === 'uploadvideo') {
+        var file_url = imgDir;//默认图片上传地址
+        /*其他上传格式的地址*/
+        if (ActionType === 'uploadfile') {
+            file_url = '/ueditor/upload/file'; //附件
+        }
+        if (ActionType === 'uploadvideo') {
+            file_url = '/ueditor/upload/video'; //视频
+        }
+        res.ue_up(file_url); //你只要输入要保存的地址 。保存操作交给ueditor来做
+        res.setHeader('Content-Type', 'text/html');
+    }
+    //  客户端发起图片列表请求
+    else if (req.query.action === 'listimage') {
+        var dir_url = imgDir;
+        res.ue_list(dir_url); // 客户端会列出 dir_url 目录下的所有图片
+    }
+    // 客户端发起其它请求
+    else {
+        // console.log('config.json')
+        res.setHeader('Content-Type', 'application/json');
+        res.redirect('/ueditor/nodejs/config.json');
+    }
+}));
+
 //取出设置的环境变量的值
 console.log('取出的变量值', process.env.NODE_ENV);
 //是否是开发模式

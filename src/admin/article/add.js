@@ -1,4 +1,7 @@
-console.log('我是add.js');
+//初始化编译器
+var ue = UE.getEditor('body');
+
+//前端校验
 require('jquery-validation');
 require('jquery-validation/dist/localization/messages_zh');
 
@@ -26,7 +29,7 @@ $('#myForm').validate({
             type: 'post',
             data:{
                 title : $('#title').val(),
-                body: $('#body').val()
+                body: ue.getContent()
             },
             success: function(res) {
                 alert(res.message);

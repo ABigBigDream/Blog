@@ -35,9 +35,6 @@ $('#table').bootstrapTable({
             title: '文章标题',
             align: 'left'
         },{
-            field: 'body',
-            title: '文章内容'
-        },{
             field: 'time',
             title: '发布时间',
             align: 'center',

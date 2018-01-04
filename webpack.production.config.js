@@ -23,8 +23,8 @@ module.exports = {
         //取别名
         alias: {
             SRC: srcPath,
-            BOOTSTRAP_CSS:'bootstrap/dist/css/bootstrap.css'
-            // BOOTSTRAP_TABLE_CSS:'bootstrap-table/dist/bootstrap-table.css'
+            BOOTSTRAP_CSS:'bootstrap/dist/css/bootstrap.css',
+            BOOTSTRAP_TABLE_CSS:'bootstrap-table/dist/bootstrap-table.css'
         }
     },
     module: {
@@ -63,7 +63,9 @@ module.exports = {
     },
     plugins:[
         //每次编译前清除已有的文件
-        new CleanWebpackPlugin(['public']),
+        new CleanWebpackPlugin(['public'], {
+            exclude: ['ueditor']
+        }),
         //将css文件提取出来
         new ExtractTextPlugin({
             filename: function(getPath) {
