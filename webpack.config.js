@@ -6,7 +6,8 @@ const srcPath = path.join(__dirname, 'src');
 module.exports = {
     entry: {
         'common/main' : [srcPath+'/common/main.js', 'webpack-hot-middleware/client?reload=true'],
-        'common/admin-lib':['bootstrap','BOOTSTRAP_CSS'] //public/common/admin-lib.js public/common/admin-lib.css
+        'common/admin-lib':['jquery','bootstrap','BOOTSTRAP_CSS'], //public/common/admin-lib.js public/common/admin-lib.css
+        'common/lib': ['jquery', 'APP_CSS']
     },
     output: {
         path : __dirname + '/public',
@@ -21,17 +22,19 @@ module.exports = {
         alias: {
             SRC: srcPath,
             BOOTSTRAP_CSS:'bootstrap/dist/css/bootstrap.css',
-            BOOTSTRAP_TABLE_CSS:'bootstrap-table/dist/bootstrap-table.css'
+            BOOTSTRAP_TABLE_CSS:'bootstrap-table/dist/bootstrap-table.css',
+            APP_CSS:'SRC/common/app.less'
         }
     },
     module: {
         rules:[
             //CSS加载器
             {
-                test: /\.css$/,
+                test: /\.(css|less)$/,
                 use: [  
                     'style-loader',  //style-loader一定要写在css-loader之前
-                    'css-loader?sourceMap'
+                    'css-loader?sourceMap',
+                    'less-loader' //用来处理less文件
                 ]
             },
             //图片加载器

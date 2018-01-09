@@ -1,0 +1,16 @@
+{% extends './layout.html' %} 
+{% block title %} 首页 {% endblock %} 
+{% block content%}
+
+<div id="content" class="post-single">
+        <div id="singular-content">
+            <article>
+                <header class="entry-header">
+                    <h1>{{article.title}}</h1>
+                </header>
+                <div class="entry-content">{{article.body|raw()}}</div>
+                <div class="clear"></div>
+            </article>
+        </div>
+</div>
+{% endblock %} 

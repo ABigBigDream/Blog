@@ -4,7 +4,7 @@
 module.exports = (req, res, next)=>{
      
     if(req.url.startsWith('/admin')) {
-        if(req.app.locals) {
+        if(req.app.locals.isDev) {
             if(!req.session.user) {
                 req.session.user = {
                     username: '小付君'
