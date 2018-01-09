@@ -9,4 +9,4 @@ npm install
 npm install supervisor -g
 、、、
 
-bootstrap-table框架
+bootstrap-table框架                                    
