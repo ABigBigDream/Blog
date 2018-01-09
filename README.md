@@ -8,3 +8,5 @@ npm install
 全局安装supervisor
 npm install supervisor -g
 、、、
+
+bootstrap-table框架
